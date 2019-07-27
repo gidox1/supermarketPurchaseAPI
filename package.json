@@ -1,0 +1,28 @@
+{
+  "name": "supermarketpurchaseapi",
+  "version": "1.0.0",
+  "description": "supermarketPurchaseAPI",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gidox1/supermarketPurchaseAPI.git"
+  },
+  "author": "Odiase Gideon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gidox1/supermarketPurchaseAPI/issues"
+  },
+  "homepage": "https://github.com/gidox1/supermarketPurchaseAPI#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-router": "0.0.1",
+    "lodash": "^4.17.15",
+    "mongoose": "^5.6.7",
+    "nodemon": "^1.19.1",
+    "redis": "^2.8.0"
+  }
+}
