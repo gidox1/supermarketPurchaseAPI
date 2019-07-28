@@ -18,8 +18,7 @@ class Product {
     async create(req, res) {
         return await productService.create(req.body)
             .then(result => {
-                console.log('the result =>', result)
-                return (result.status === true) ? res.status(200).json({status: 'success', message: 'Product successfully created'})
+                return (result.status === true) ? res.status(200).json({status: 'success', message: 'Product successfully created', body: result.result})
                     : res.status(409).json({status: 'error', message: 'Product Already Exists'})
             })
             .catch(error => {
@@ -47,14 +46,14 @@ class Product {
                     : res.status(404).json({status: 'Product Not found'})
             })
             .catch(err => {
-                console.log('Error Occured', error);
+                console.log('Error Occured', err);
             })
     }
     
     
     async update(req, res) {
-        const {productId} = req.params;
-        return await productService.update(productId, req.body)
+        const {product_name} = req.query;
+        return await productService.update(product_name, req.body)
             .then(result => {
                 return (result.status === true) ? res.status(201).json({status: 'success', message: 'Product Successfully Updated'})
                     : res.status(404).json({status: 'Product Not found'})
@@ -72,7 +71,7 @@ class Product {
                     : res.status(404).json({status: 'Product Not found'})
             })
             .catch(err => {
-
+                console.log('An error occured')
             })    
     }
 

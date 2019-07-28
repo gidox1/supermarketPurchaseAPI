@@ -8,9 +8,6 @@ const productService = new ProductService();
 const PurchaseController = require('../controller/purchase');
 const purchaseController = new PurchaseController();
 
-console.log('within utils');
-
-
 module.exports = {
     productController,
     productService,

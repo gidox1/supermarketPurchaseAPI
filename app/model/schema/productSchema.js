@@ -21,7 +21,6 @@ const Product = mongoose.Schema({
         type : Date, 
         default: Date.now 
     },
-    month: {type: String, required: true}
 })
 
 module.exports = mongoose.model('Product', Product);

@@ -26,8 +26,8 @@ class Purchase {
                 message: price.message
             }
         } else {
-            const log = this.logTransaction(payload);
-            if(log) return {status: true,message: 'done'}
+            const log = await this.logTransaction(payload);
+            if(log) return {status: true,message: 'Thank you for buying from us', body:log.body}
         }
     }
 
@@ -59,10 +59,12 @@ class Purchase {
                     quantity,
                     month
         })
+
         return Transaction.save()
                 .then(result => {
                     return {
                         status: true,
+                        body: result
                     };
                 })
                 .catch(err => {
@@ -71,14 +73,21 @@ class Purchase {
                 })
     }
 
-    async getTransaction(fromMonth, name) {
-        console.log(fromMonth, name)
-        return transaction.find({name: name, month: fromMonth})
+    async getTransaction(fromMonth, nameParam) {
+        const month = fromMonth.month;
+        const product_name = nameParam.name;
+        return transaction.find({product_name: product_name, month: month})
             .then(result => {
-                console.log(result)
+                return {
+                    status: true,
+                    body: result
+                }
             })
             .catch(err => {
-                console.log('Error => ', err)
+                console.log('Error => ', err);
+                return {
+                    status: false
+                }
             })
     }
 
@@ -88,7 +97,6 @@ class Purchase {
             .exec()
             .then(result => {
                 if(result === null || result.length < 1) return false;
-                console.log(result, 'Got Transaction successfuly');
                 return {status: true, body: result}
             })
             .catch(err => {console.log('an error occured', err)})
@@ -101,7 +109,7 @@ class Purchase {
         const month = months[index];
         return month;
     }
-
+    
 }
 
 module.exports = Purchase;

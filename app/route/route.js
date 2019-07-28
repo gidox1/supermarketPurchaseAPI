@@ -9,7 +9,7 @@ router.post('/product', (req, res) => productController.create(req, res));
 
 router.get('/product/', (req, res) => productController.getAllProduct(req, res));
 
-router.post('/product/:productId', (req, res) => productController.update(req, res));
+router.post('/product/update', (req, res) => productController.update(req, res));
 
 router.get('/product/:productId', (req, res) => productController.getProduct(req, res));
 

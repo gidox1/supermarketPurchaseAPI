@@ -9,7 +9,7 @@ class Purchase {
     async purchaseProduct(req, res) {
         return purchaseService.createPurchase(req.body)
             .then(result => {
-                return (result.status === true) ? res.status(200).json({status: 'success', message: result.message})
+                return (result.status === true) ? res.status(200).json({status: 'success', message: result.message, body: result.body})
                     : res.status(409).json({status: 'error', message: result.message})
             })
             .catch(err => {
@@ -20,7 +20,7 @@ class Purchase {
     async getTransaction(req, res) {
         return purchaseService.getTransaction(req.params, req.query)
             .then(result => {
-                return (result.status === true) ? res.status(200).json({status: 'success', message: result.message})
+                return (result.status === true) ? res.status(200).json({status: 'success', body: result.body})
                     : res.status(409).json({status: 'error', message: result.message})
             })
             .catch(error => {

@@ -1,4 +1,4 @@
-module.exports = config = {
+const config = {
     port: process.env.PORT,
     mongodb: {
         mongodb_host: process.env.MONGODB_HOST
@@ -9,3 +9,5 @@ module.exports = config = {
         database: process.env.REDIS_DATABASE || 0,
     },
 }
+
+module.exports = config;

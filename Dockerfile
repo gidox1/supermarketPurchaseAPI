@@ -1,8 +1,6 @@
 #Using pre-defined node base image
 FROM node:10.0.0
 
-#creating the log directory
-RUN mkdir -p /var/log/app/ajo_wallet
 
 RUN mkdir /var/www
 WORKDIR /var/www
@@ -14,7 +12,7 @@ ADD package.json /var/www/
 # Install nodemon to restart server on changes and the express
 # packages for routing and path
 RUN npm install
-RUN npm install nodemon knex -g 
+RUN npm install nodemon 
 
 ADD . /var/www/
 
